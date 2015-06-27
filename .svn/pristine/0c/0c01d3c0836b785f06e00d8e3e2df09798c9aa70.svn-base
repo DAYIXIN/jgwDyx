@@ -1,0 +1,13 @@
+//
+//  addChoseViewController.h
+//  daYiXin
+//
+//  Created by JGW on 15/5/13.
+//  Copyright (c) 2015年 JGW. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+
+@interface addChoseViewController : UIViewController
+
+@end

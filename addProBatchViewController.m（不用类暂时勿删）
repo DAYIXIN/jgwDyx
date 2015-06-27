@@ -1,0 +1,219 @@
+//
+//  addProBatchViewController.m
+//  daYiXin
+//
+//  Created by JGW on 15/5/9.
+//  Copyright (c) 2015年 JGW. All rights reserved.
+//
+
+#import "addProBatchViewController.h"
+#import "proBatchViewController.h"
+#import "JGWClient.h"
+#import "CommonConstant.h"
+//rgb宏定义
+//#define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
+
+
+@interface addProBatchViewController ()
+
+@end
+
+@implementation addProBatchViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // Do any additional setup after loading the view.
+//    //创建一个按钮控件
+//    UIButton *submitbtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+//    //在正常情况下，设置按钮标题
+//    [submitbtn setTitle:@"提交" forState:UIControlStateNormal];
+//    //设置按钮文本颜色
+//    [submitbtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+//    //设置按钮大小
+//    submitbtn.frame = CGRectMake(20, 230, 280, 50);
+//    //设置按钮的背景色
+//    submitbtn.backgroundColor = UIColorFromRGB(0xD59834);
+//    //将按钮添加到当前视图
+//    [self.view addSubview:submitbtn];
+    //设置日期选择器的背景色
+    self.datePicker.backgroundColor = UIColorFromRGB(0xA1DBFF);
+    //设置生产日期文本框不可编辑
+    self.productionTime.enabled = NO;
+    
+
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+/*
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+*/
+
+
+//显示日期选择器方法
+//- (IBAction)showDatePicker:(id)sender
+//{
+//    self.datePicker.hidden = NO;
+//    self.datePicker.alpha = 1;
+//}
+
+//点击单位按钮方法
+- (IBAction)showUnit:(id)sender
+{
+    self.unitView.hidden = NO; ////显示单位视图
+}
+
+
+//选择单位按钮点击事件
+//斤
+- (IBAction)jinClicked:(UIButton *)sender
+{
+//    if (sender.tag == 101)
+//    {
+//        [self.unitButton setTitle:@"斤" forState:UIControlStateNormal];
+//    }
+//    else if(sender.tag == 102)
+//    {
+//        [self.unitButton setTitle:@"公斤" forState:UIControlStateNormal];
+//    }
+//    else if(sender.tag == 103)
+//    {
+//        [self.unitButton setTitle:@"吨" forState:UIControlStateNormal];
+//    }
+    //设置单位按钮的文本
+   [self.unitButton setTitle:@"斤" forState:UIControlStateNormal];
+    //设置单位视图隐藏
+    self.unitView.hidden = YES;
+    
+}
+//公斤
+- (IBAction)kilogramClicked:(UIButton *)sender
+{
+    //设置单位按钮的文本
+    [self.unitButton setTitle:@"公斤" forState:UIControlStateNormal];
+    //设置单位视图隐藏
+    self.unitView.hidden = YES;
+}
+//吨
+- (IBAction)tonClicked:(UIButton *)sender
+{
+    //设置单位按钮的文本
+    [self.unitButton setTitle:@"吨" forState:UIControlStateNormal];
+    //设置单位视图隐藏
+    self.unitView.hidden = YES;
+}
+
+//克
+- (IBAction)gramClicked:(UIButton *)sender
+{
+    //设置单位按钮的文本
+    [self.unitButton setTitle:@"克" forState:UIControlStateNormal];
+    //设置单位视图隐藏
+    self.unitView.hidden = YES;
+}
+//包
+- (IBAction)bagClicked:(UIButton *)sender
+{
+    //设置单位按钮的文本
+    [self.unitButton setTitle:@"包" forState:UIControlStateNormal];
+    //设置单位视图隐藏
+    self.unitView.hidden = YES;
+}
+//箱
+- (IBAction)boxClicked:(UIButton *)sender
+{
+    //设置单位按钮的文本
+    [self.unitButton setTitle:@"箱" forState:UIControlStateNormal];
+    //设置单位视图隐藏
+    self.unitView.hidden = YES;
+}
+//条
+- (IBAction)pairClicked:(UIButton *)sender
+{
+    //设置单位按钮的文本
+    [self.unitButton setTitle:@"条" forState:UIControlStateNormal];
+    //设置单位视图隐藏
+    self.unitView.hidden = YES;
+}
+//支
+- (IBAction)zhiClicked:(UIButton *)sender
+{
+    //设置单位按钮的文本
+    [self.unitButton setTitle:@"支" forState:UIControlStateNormal];
+    //设置单位视图隐藏
+    self.unitView.hidden = YES;
+}
+
+//完成选择日期后方法
+- (IBAction)finishedDateSelected:(UIBarButtonItem *)sender
+{
+    //获取所选日期并转换成二进制格式
+    NSData *date = self.datePicker.date;
+    NSDateFormatter *fmt = [[NSDateFormatter alloc]init];
+    fmt.dateFormat = @"yyyy MM dd";
+    self.productionTime.text = [fmt stringFromDate:date];
+    self.datePickerView.hidden = YES;
+}
+
+//提交数据方法
+- (IBAction)submitData:(UIButton *)sender
+{
+    //判断批次编码是否输入
+    if ([self.batchCode.text length]<1)
+    {
+        ReturnWithMsg(@"请输入批次编号");
+    }
+    //判断供货量是否输入
+    if ([self.deliquty.text length]<1)
+    {
+        ReturnWithMsg(@"请输入供货量");
+    }
+    //判断产品价格是否输入
+    if ([self.productPrice.text length]<1)
+    {
+//        [_commonUtils showMessageBox:@"请输入产品价格" : nil];
+//        return;
+        ReturnWithMsg(@"请输入产品价格"); //可以这么偷懒的
+    }
+    //判断生产人是否输入
+    if ([self.producer.text length]<1)
+    {
+        ReturnWithMsg(@"请输入生产人");
+    }
+    
+    NSString *btnTitle = [self.unitButton titleForState:UIControlStateNormal];
+    
+    [self showHUDWithMsg: @"添加批次"];
+    
+    //这里是调用产品批次接口，并且把得到的数据，存放在userDict这个字典里
+    NSDictionary * userDict = [_sharedClient addWithBatchCode:self.batchCode.text andDeliquty:self.deliquty.text andDeliqutyUnit:btnTitle andProductPrice:self.productPrice.text andProducer:self.producer.text andProductionTime:self.productionTime.text andCustomItems:nil];
+    
+    [self hideHUD];
+    
+    if (userDict) //success
+    {
+        
+    }
+    else //fail
+    {
+        
+    }
+    
+}
+//选择日期按钮
+- (IBAction)changeDateButton:(UIButton *)sender
+{
+    //让日期选择器视图不隐藏
+    self.datePickerView.hidden = NO;
+}
+
+@end

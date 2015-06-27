@@ -5,8 +5,11 @@
 //  Created by JGW on 15/5/7.
 //  Copyright (c) 2015年 JGW. All rights reserved.
 //
+#import "CommonConstant.h"
 
 #import "AppDelegate.h"
+//rgb宏定义
+#define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
 @interface AppDelegate ()
 
@@ -17,8 +20,22 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+
+    if ([UINavigationBar appearance])
+    {
+        NSLog(@"生效了");
+        //设置导航栏背景色
+        [[UINavigationBar appearance] setBarTintColor:UIColorFromRGB(0xD59834)];
+        
+    }
+    
+    _commonObjects.isTestingEnv = YES;
+    [_commonObjects checkNetwork];
+  
     return YES;
 }
+
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

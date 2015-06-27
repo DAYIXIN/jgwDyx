@@ -1,0 +1,62 @@
+//
+//  addProBatchViewController.m
+//  daYiXin
+//
+//  Created by JGW on 15/5/9.
+//  Copyright (c) 2015年 JGW. All rights reserved.
+//
+
+#import "addProBatchViewController.h"
+#import "proBatchViewController.h"
+//rgb宏定义
+#define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
+
+
+@interface addProBatchViewController ()
+
+@end
+
+@implementation addProBatchViewController
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // Do any additional setup after loading the view.
+//    //创建一个按钮控件
+//    UIButton *submitbtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+//    //在正常情况下，设置按钮标题
+//    [submitbtn setTitle:@"提交" forState:UIControlStateNormal];
+//    //设置按钮文本颜色
+//    [submitbtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+//    //设置按钮大小
+//    submitbtn.frame = CGRectMake(20, 230, 280, 50);
+//    //设置按钮的背景色
+//    submitbtn.backgroundColor = UIColorFromRGB(0xD59834);
+//    //将按钮添加到当前视图
+//    [self.view addSubview:submitbtn];
+    
+
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+/*
+#pragma mark - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+}
+*/
+
+//- (IBAction)backProBatchCtrl:(id)sender
+//{
+//    //点击返回item时，返回到产品批次界面
+//    [self.navigationController popViewControllerAnimated:YES];
+//    
+//    
+//}
+@end

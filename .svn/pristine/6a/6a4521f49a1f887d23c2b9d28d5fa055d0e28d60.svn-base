@@ -1,0 +1,14 @@
+//
+//  productMeansViewController.h
+//  daYiXin
+//
+//  Created by JGW on 15/5/11.
+//  Copyright (c) 2015年 JGW. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+
+@interface productMeansViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UIButton *addProduct;
+
+@end

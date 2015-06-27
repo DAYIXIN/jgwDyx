@@ -1,0 +1,48 @@
+//
+//  addProBatchViewController.h
+//  daYiXin
+//
+//  Created by JGW on 15/5/9.
+//  Copyright (c) 2015年 JGW. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+#import "BaseViewController.h"
+
+@interface addProBatchViewController : BaseViewController
+//- (IBAction)showDatePicker:(id)sender;
+@property (weak, nonatomic) IBOutlet UITextField *batchCode;//批次编码
+@property (weak, nonatomic) IBOutlet UITextField *deliquty;//供货量
+@property (weak, nonatomic) IBOutlet UIButton *deliqutyUnit;//供应量单位
+@property (weak, nonatomic) IBOutlet UITextField *productPrice;//产品价格
+@property (weak, nonatomic) IBOutlet UITextField *producer;//生产人
+@property (weak, nonatomic) IBOutlet UITextField *productionTime;//生产日期
+@property (weak, nonatomic) IBOutlet UIButton *unitButton;//单位按钮
+@property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;//日期选择器
+@property (weak, nonatomic) IBOutlet UIView *unitView;//单位视图
+- (IBAction)showUnit:(id)sender;//显示单位视图的方法
+//- (IBAction)sbumitData:(id)sender;//点击提交数据方法
+@property (weak, nonatomic) IBOutlet UIButton *jinButton;
+//改变日期按钮
+//@property (weak, nonatomic) IBOutlet UIButton *changeDataButton;
+//8个单位选择点击方法
+- (IBAction)gramClicked:(UIButton *)sender;//克
+- (IBAction)kilogramClicked:(UIButton *)sender;//公斤
+- (IBAction)tonClicked:(UIButton *)sender;//吨
+- (IBAction)bagClicked:(UIButton *)sender;//包
+- (IBAction)boxClicked:(UIButton *)sender;//箱
+- (IBAction)pairClicked:(UIButton *)sender;//条
+- (IBAction)zhiClicked:(UIButton *)sender;//支
+
+//放有日期选择器的视图
+@property (weak, nonatomic) IBOutlet UIView *datePickerView;
+//点击弹出日期选择器视图方法
+- (IBAction)changeDateButton:(UIButton *)sender;
+
+//日期选择完成后方法
+- (IBAction)finishedDateSelected:(UIBarButtonItem *)sender;
+- (IBAction)submitData:(UIButton *)sender;
+//@property (weak, nonatomic) IBOutlet UIButton *finishDateSelected;
+
+
+@end
